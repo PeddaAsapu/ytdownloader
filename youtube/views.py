@@ -1,4 +1,3 @@
-# importing all the required modules
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from pytube import *
@@ -11,8 +10,8 @@ def downlaod_yt_video(request):
     if request.method == 'POST':
        
         # getting link from frontend
-        link = request.POST['link']
-        video = YouTube(link)
+        video_url = request.POST['link']
+        video = YouTube(video_url)
  
         # setting video resolution
         stream = video.streams.get_lowest_resolution()
@@ -24,7 +23,3 @@ def downlaod_yt_video(request):
         return render(request, 'youtube_home.html')
     #return HttpResponse('ok')
     return render(request, 'youtube_home.html')
-
-def hello(request) :
-    #return HttpResponse('ok done')
-    return render(request, 'hello.html')
