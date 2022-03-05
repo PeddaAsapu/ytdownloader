@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     path('home/', views.downlaod_yt_video),
-    path('hello/', views.hello) 
 ]

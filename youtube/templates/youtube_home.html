@@ -1,17 +1,17 @@
-<!DOCTYPE html>
 <html>
-<body>
- 
-<h1>Youtube video downloader</h1>
- 
- 
-<form action="" method="post">
-  {% csrf_token %}
- 
-  <label for="link">Enter URL:</label>
-  <input type="text" id="link" name="link"><br><br>
-  <input type="submit" value="Submit">
-</form>
- 
-</body>
+    <div style="text-align:center;">
+        <h1>Youtube video downloader</h1>
+        {% if not message %}
+            <form action="" method="post">
+            {% csrf_token %}
+                <label for="link">Enter Video URL:</label>
+                <input type="text" id="link" name="link"><br><br>
+                <label for="link">Enter the Path :</label>
+                <input type="text" id="destination" name="destination"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        {% else %}
+            {{ message }} to <div style="color: red;"> {{ path }}  <div>
+        {% endif %}
+    </div>
 </html>

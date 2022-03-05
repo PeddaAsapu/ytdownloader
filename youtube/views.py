@@ -12,14 +12,15 @@ def downlaod_yt_video(request):
         # getting link from frontend
         video_url = request.POST['link']
         video = YouTube(video_url)
- 
+        destination = request.POST['destination']
         # setting video resolution
         stream = video.streams.get_lowest_resolution()
          
         # downloads video
-        stream.download()
- 
+        stream.download(output_path=destination)
+
+        #return HttpResponse(destination)
         # returning HTML page
-        return render(request, 'youtube_home.html')
+        return render(request, 'youtube_home.html', {'message' : 'Your video has been downloaded', 'path' : destination})
     #return HttpResponse('ok')
     return render(request, 'youtube_home.html')
